@@ -55,6 +55,26 @@ button:hover {
   clear: both;
   display: table;
 }
+.fh{
+    font-size:22px;
+    color:blue;
+    padding: 10px;
+    margin-left: 80%;
+    background-color: blue;
+    color: white;
+}
+button {
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+button:hover {
+  opacity: 0.8;
+}
 
 /* Change styles for signup button on extra small screens */
 @media screen and (max-width: 300px) {
@@ -66,7 +86,7 @@ button:hover {
 </head>
 <body style="background-color: rgb(220,220,220);">
 <br><br><br>
-<a href="{{ url_for('index') }}"><i class="fa fa-home" style="font-size:48px;color:blue; margin-left: 20%"></i></a>
+<a href="{{ url_for('index') }}"><button class="fh">Back</button></a>
 <br><br><br>
 
   <form action="{{ url_for('display') }}" method="post" style="text-align: center;">

@@ -3,8 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Oopes</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+            a:hover{
+            opacity: 0.9;
+        }
+        .fa-home{
+            color: blue;
+            font-size:48px;
+        }
+        .sob{
+            background-color: blue;
+            color: white;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+        }
+        .ontop{
+            display: inline-block;
+        }
+        .bothontop{
+            margin-left: 84%;
+        }
+</style>
 </head>
 <body style="background-color: rgb(220, 220, 220)">
-       <h1>Oops, There is no book by this discription!</h1>
+<div class="bothontop">
+    <div class="ontop">
+         <a href="{{ url_for('search') }}"><i class="fa fa-home" style="margin-right: 85%;"></i></a><br>
+    </div>
+    <div class="ontop">
+         <a href="{{ url_for('index') }}"><button type="button" class="sob" style="margin-right: 2%;">Sign Out</button></a>
+    </div>
+</div>
+
+<br><br><br><br><br>
+
+<h1 style="color: darkblue; text-align: center">Oops, There is no book with this credential!</h1>
+
+
 </body>
 </html>
