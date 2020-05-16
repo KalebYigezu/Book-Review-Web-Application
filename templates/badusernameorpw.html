@@ -9,24 +9,53 @@
         color: blue;
         text-align: center;
     }
+            a:hover{
+            opacity: 0.9;
+        }
+        .fa-home{
+            color: blue;
+            font-size:48px;
+            opacity: 0.8;
+        }
+        .sob{
+            background-color: blue;
+            color: white;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+        }
+        .ontop{
+            display: inline-block;
+        }
+        .bothontop{
+            margin-left: 84%;
+        }
     .mybutton{
+
         margin-left: 47%;
         color: white;
+        padding: 10px;
+        border: none;
         background-color: blue;
-        padding: 20px;
-        border: 0px;
         cursor: pointer;
     }
-    button:hover {
-        opacity:0.8;
+    button:hover{
+        opacity: 0.8;
     }
 
 </style>
 </head>
 <body style="background-color: rgb(220, 220, 220)">
-<br><br><br>
-<a href="{{ url_for('index') }}"><i class="fa fa-home" style="font-size:48px;color:blue; margin-left: 20%"></i></a>
-<br><br><br>
+<div class="bothontop">
+    <div class="ontop">
+         <a href="{{ url_for('search') }}"><i class="fa fa-home" style="margin-right: 85%;"></i></a><br>
+    </div>
+    <div class="ontop">
+         <a href="{{ url_for('index') }}"><button type="button" class="sob" style="margin-right: 2%;">Sign Out</button></a>
+    </div>
+</div>
+
+<br>
 <h1>Wrong email address or password!</h1>
   <h1>Try again</h1>
   <br>

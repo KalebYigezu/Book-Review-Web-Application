@@ -44,6 +44,32 @@ button:hover {
   background-color: blue;
   color: white;
 }
+    button:hover {
+    opacity: 0.8;
+}
+    i:hover{
+        opacity: 0.8;
+    }
+                a:hover{
+            opacity: 0.9;
+        }
+        .fa-home{
+            color: blue;
+            font-size:48px;
+        }
+        .sob{
+            background-color: blue;
+            color: white;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+        }
+        .ontop{
+            display: inline-block;
+        }
+        .bothontop{
+            margin-left: 84%;
+        }
 
 /* Add padding to container elements */
 .container {
@@ -66,9 +92,16 @@ button:hover {
 </style>
 </head>
 <body style="background-color: rgb(220,220,220);">
-<br><br><br>
-<a href="{{ url_for('index') }}"><i class="fa fa-home" style="font-size:48px;color:blue; margin-left: 20%"></i></a>
-<br><br><br>
+<div class="bothontop">
+    <div class="ontop">
+         <a href="{{ url_for('search') }}"><i class="fa fa-home" style="margin-right: 85%;"></i></a><br>
+    </div>
+    <div class="ontop">
+         <a href="{{ url_for('index') }}"><button type="button" class="sob" style="margin-right: 2%;">Sign Out</button></a>
+    </div>
+</div>
+
+<br>
 <h1 style="text-align: center; color: blue;">You have created an account. </h1>
 <h1 style="text-align: center; color: blue;">Sign in now.</h1>
 

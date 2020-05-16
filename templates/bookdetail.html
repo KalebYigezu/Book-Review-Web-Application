@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Book Detail</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         .divs{
             display: inline-block;
@@ -25,9 +26,42 @@
             margin-left: 6%;
             margin-right: 6%;
         }
+        .fa-home{
+            color: blue;
+            font-size:48px;
+        }
+        .sob{
+            background-color: blue;
+            color: white;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+        }
+        .ontop{
+            display: inline-block;
+        }
+        .bothontop{
+            margin-left: 84%;
+        }
+        button:hover {
+          opacity: 0.8;
+        }
+        i:hover{
+          opacity: 0.8;
+        }
     </style>
 </head>
 <body style="background-color: rgb(220, 220, 220); color: darkblue">
+<div class="bothontop">
+    <div class="ontop">
+         <a href="{{ url_for('search') }}"><i class="fa fa-home" style="margin-right: 85%;"></i></a><br>
+    </div>
+    <div class="ontop">
+         <a href="{{ url_for('index') }}"><button type="button" class="sob" style="margin-right: 2%;">Sign Out</button></a>
+    </div>
+</div>
+
+<br>
 <div class="divs" id="coverpic">Image</div>
 <div class="divs" id="details">
 <b> <h1>     My Sister&#39;s Keeper  </h1></b>
