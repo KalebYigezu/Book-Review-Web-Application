@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Detail</title>
+    <style>
+        .divs{
+            display: inline-block;
+            margin-left: 10.5%;
+            margin-right: 10.5%;
+        }
+        #details{
+            text-align: center;
+        }
+        .ur{
+             background-color: rgb(190,190,190);
+             padding: 3px;
+             color: white;
+             margin-top: 0px;
+             margin-bottom: 0px;
+             text-align: center;
+        }
+        .rws{
+            display: inline-block;
+            margin-left: 6%;
+            margin-right: 6%;
+        }
+    </style>
+</head>
+<body style="background-color: rgb(220, 220, 220)">
+<div class="divs" id="coverpic">Image</div>
+<div class="divs" id="details">
+<b> <h1>     My Sister&#39;s Keeper  </h1></b>
+<h3>Author = Jodi Picoult </h3>
+<h3>Year   = 2004 </h3>
+<h3>ISBN   = 743454537 </h3>
+</div>
+<div class="divs" id="goodreads"><h1>goodreads</h1></div>
+<hr>
+<h1 class="ur">Users Review</h1>
+<hr>
+<h2 style="color: black; text-align: center">Write Your Own Review</h2>
+
+<div class="not" style="border: 2px solid white; text-align: center">
+    <div class="rws"><label for="rates"><b>Rate This Book : </b></label>
+            <select id="cars" required>
+                <option value="One">1</option>
+                <option value="Two">2</option>
+                <option value="Three">3</option>
+                <option value="Four">4</option>
+                <option value="Five">5</option>
+            </select></div>
+        <div class="rws">
+            <label for="Comments" ><b>Say Something : </b></label>
+            <textarea required></textarea>
+        </div>
+    <div class="rws"><button>Submit</button></div>
+</div>
+
+</body>
+</html>

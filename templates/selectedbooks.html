@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selected Books</title>
+    <style>
+            .perbook{
+            border: 2px;
+            border-style: solid;
+            border-color: blue;
+            margin: 0.5%;
+            padding: 3%;
+            display: inline-block;
+            width: 180px;
+            height: 210px;
+        }
+        .footer{
+            background-color: blue;
+            opacity: 0.5;
+            padding: 4%;
+            color: white;
+            position: relative;
+            border: 1px solid green;
+            text-align: center;
+            margin-top: 80px;
+        }
+        a:hover{
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body style="background-color: rgb(220, 220, 220)">
+
+{%  for book in books %}
+    <div class="perbook">
+     <b>          {{ book.title }} </b><br><br>
+         Author = {{ book.author }} <br>
+         Year   = {{ book.yearr }} <br>
+         ISBN   = {{ book.isbn }} <br>
+    <a href="{{ url_for('bookdetail', title=book.title, author=book.author, isbn=book.isbn, yearr=book.yearr) }}"><div class="footer">Book Details</div></a>
+    </div>
+{% endfor %}
+
+</body>
+</html>

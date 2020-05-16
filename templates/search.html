@@ -22,20 +22,34 @@
     background-color: blue;
     color: white;
     }
+.sob{
+    background-color: blue;
+    color: white;
+    padding: 15px;
+    border: none;
+    margin-left: 80%;
+    cursor: pointer;
+}
+button:hover {
+  opacity: 0.8;
+}
 </style>
 </head>
 <body style="background-color: rgb(220,220,220)">
     <div style="text-align: center; size: 50%">
-      <br><br><br><br><br><br><br><br><br>
-      <form action="/action_page.php">
+      <br><br><br><br>
+        <a href="{{ url_for('index') }}"><button type="button" class="sob">Sign Out</button></a>
+      <br><br><br><br><br>
+      <form action="{{ url_for('selected_books') }}" method="post">
       <div class="both">
 
               <input class = "SearchBar" type="text" placeholder="Search.." name="search" style="font-size: 50px">
 
-              <button class = "thistoo" type="submit"><i class="fa fa-search"></i></button>
+              <button class = "thistoo" type="submit"><i class="fa fa-search"></i></button> <br>
 
       </div>
     </form>
     </div>
+    <h1 style="color: rgb(180, 180, 180); margin-left: 20%">ISBN, Title, or Author</h1>
 </body>
 </html>
