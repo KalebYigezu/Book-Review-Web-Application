@@ -72,5 +72,22 @@ def display():
     return render_template('display.html')
 
 
+@app.route('/selectedbooks', methods=['POST'])
+def selected_books():
+    search_results = request.form.get('search')
+    books = db.execute('select isbn, author, title, yearr from books where isbn like :isbn or author = :author or title = :title',
+                       {'yearr': search_results,'isbn': search_results, 'title': search_results, 'author': search_results}).fetchall()
+    if len(books) == 0:
+        return render_template("oops.html")
+    else:
+        return render_template('selectedbooks.html', books=books)
+
+
+@app.route('/bookdetail/<string:title>/<string:author>/<string:isbn>/<string:yearr>', methods=['POST', 'GET'])
+def bookdetail(title, author, isbn, yearr):
+    return render_template('bookdetail.html', title=title, author=author, isbn=isbn, yearr=yearr)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
+
