@@ -44,16 +44,19 @@ def results():
 
 
 # will check if there is a user name and password matched with this in the database and give access
-@app.route('/search', methods=['POST'])
+@app.route('/search', methods=['POST', 'GET'])
 def search():
-    email = request.form.get('email')
-    password = request.form.get('password')
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
 
-    users = db.execute('select email, password from users where email = :email and password = :password',
-                       {'email': email, 'password': password}).fetchall()
+        users = db.execute('select email, password from users where email = :email and password = :password',
+                           {'email': email, 'password': password}).fetchall()
 
-    if len(users) == 0:
-        return render_template("badusernameorpw.html")
+        if len(users) == 0:
+            return render_template("badusernameorpw.html")
+        else:
+            return render_template('search.html')
     else:
         return render_template('search.html')
 
