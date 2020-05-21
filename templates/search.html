@@ -23,12 +23,17 @@
     color: white;
     }
 .sob{
-    background-color: blue;
     color: white;
     padding: 15px;
     border: none;
-    margin-left: 80%;
+    width: 60px ;
     cursor: pointer;
+}
+.od{
+    margin-left: 80%;
+}
+.do{
+    display: inline-block;
 }
 button:hover {
   opacity: 0.8;
@@ -38,7 +43,14 @@ button:hover {
 <body style="background-color: rgb(220,220,220)">
     <div style="text-align: center;">
       <br><br><br><br>
-        <a href="{{ url_for('index') }}"><button type="button" class="sob">Sign Out</button></a>
+        <div class="od">
+            <div class="do">
+                <button style="background-color: rgb(0, 0,250);" type="button" class="sob">Kaleb</button>
+            </div>
+            <div class="do">
+                <a href="{{ url_for('index') }}"><button style="background-color: rgb(0,0,210);" type="button" class="sob">Sign Out</button></a>
+            </div>
+        </div>
       <br><br><br><br><br>
       <form action="{{ url_for('selected_books') }}" method="post">
       <div class="both">
@@ -50,6 +62,6 @@ button:hover {
       </div>
     </form>
     </div>
-    <h1 style="color: rgb(180, 180, 180); margin-left: 20%">ISBN, Title, or Author</h1>
+    <h1 style="color: rgb(100, 100, 100); margin-left: 20%">ISBN, Title, or Author</h1>
 </body>
 </html>

@@ -52,9 +52,10 @@ button {
   display: table;
 }
 .fh{
-    font-size:22px;
+    font-size:20px;
     color:blue;
-    padding: 10px;
+    width: 100px;
+    padding: 8px;
     margin-left: 80%;
     background-color: blue;
     color: white;
@@ -84,7 +85,7 @@ button:hover {
 <a href="{{ url_for('index') }}"><button class="fh">Back</button></a>
 <br><br><br>
 
-  <form action="{{ url_for('display') }}" method="post" style="text-align: center;">
+  <form action="{{ url_for('signup') }}" method="post" style="text-align: center;">
   <div class="container">
         <input type="text" placeholder="Enter User Name" name="username" required style="margin-left: 30%">
 

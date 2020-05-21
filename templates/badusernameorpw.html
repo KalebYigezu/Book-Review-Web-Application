@@ -18,12 +18,12 @@
             opacity: 0.8;
         }
         .sob{
-            background-color: blue;
-            color: white;
-            padding: 15px;
-            border: none;
-            cursor: pointer;
-        }
+    color: white;
+    padding: 15px;
+    border: none;
+    width: 80px ;
+    cursor: pointer;
+}
         .ontop{
             display: inline-block;
         }
@@ -46,19 +46,12 @@
 </style>
 </head>
 <body style="background-color: rgb(220, 220, 220)">
-<div class="bothontop">
-    <div class="ontop">
-         <a href="{{ url_for('search') }}"><i class="fa fa-home" style="margin-right: 85%;"></i></a><br>
-    </div>
-    <div class="ontop">
-         <a href="{{ url_for('index') }}"><button type="button" class="sob" style="margin-right: 2%;">Sign Out</button></a>
-    </div>
-</div>
 
-<br>
+
+<br><br><br>
 <h1>Wrong email address or password!</h1>
   <h1>Try again</h1>
   <br>
-  <a href="{{ url_for('signin') }}"><button type="button" class="mybutton">Sign In</button></a>
+  <a href="{{ url_for('signin') }}"><button type="button" class="mybutton">Try Again</button></a>
 </body>
 </html>

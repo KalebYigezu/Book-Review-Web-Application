@@ -13,12 +13,18 @@
             font-size:48px;
         }
         .sob{
-            background-color: blue;
-            color: white;
-            padding: 15px;
-            border: none;
-            cursor: pointer;
-        }
+    color: white;
+    padding: 15px;
+    border: none;
+    width: 80px ;
+    cursor: pointer;
+}
+.od{
+    margin-left: 75%;
+}
+.do{
+    display: inline-block;
+}
         .ontop{
             display: inline-block;
         }
@@ -34,14 +40,17 @@
 </style>
 </head>
 <body style="background-color: rgb(220, 220, 220)">
-<div class="bothontop">
-    <div class="ontop">
-         <a href="{{ url_for('search') }}"><i class="fa fa-home" style="margin-right: 85%;"></i></a><br>
-    </div>
-    <div class="ontop">
-         <a href="{{ url_for('index') }}"><button type="button" class="sob" style="margin-right: 2%;">Sign Out</button></a>
-    </div>
-</div>
+        <div class="od">
+            <div class="do">
+                <button style="background-color: rgb(0, 0,250);" type="button" class="sob">Kaleb</button>
+            </div>
+            <div class="do">
+                <a href="{{ url_for('search') }}"><button style="background-color: rgb(0,0,200);" type="button" class="sob">Home</button></a>
+            </div>
+            <div class="do">
+                <a href="{{ url_for('index') }}"><button style="background-color: rgb(0,0,150);" type="button" class="sob">Sign Out</button></a>
+            </div>
+        </div>
 
 <br><br><br><br><br>
 
