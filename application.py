@@ -1,7 +1,7 @@
 import os
 import csv
 
-from flask import Flask, session, render_template, request
+from flask import Flask, session, render_template, request, redirect, url_for
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -35,12 +35,6 @@ def signin():
 @app.route('/signup')
 def signup():
     return render_template("signup.html")
-
-
-# shows all the books found by the search
-@app.route('/results')
-def results():
-    return render_template('results.html')
 
 
 # will check if there is a user name and password matched with this in the database and give access
@@ -81,7 +75,7 @@ def selected_books():
     books = db.execute('select isbn, author, title, yearr from books where isbn like :isbn or author = :author or title = :title',
                        {'yearr': search_results,'isbn': search_results, 'title': search_results, 'author': search_results}).fetchall()
     if len(books) == 0:
-        return render_template("oops.html")
+        return redirect(url_for('oops'))
     else:
         return render_template('selectedbooks.html', books=books)
 
@@ -91,6 +85,10 @@ def bookdetail(title, author, isbn, yearr):
     return render_template('bookdetail.html', title=title, author=author, isbn=isbn, yearr=yearr)
 
 
+@app.route('/oops')
+def oops():
+    return render_template('oops.html')
+
+
 if __name__ == "__main__":
     app.run(debug=True)
-
