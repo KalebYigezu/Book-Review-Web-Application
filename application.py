@@ -27,19 +27,9 @@ def index():
     return render_template("signinorup.html")
 
 
-@app.route('/signin')
+@app.route('/signin', methods=['POST', 'GET'])
 def signin():
-    return render_template("signin.html")
 
-
-@app.route('/signup')
-def signup():
-    return render_template("signup.html")
-
-
-# will check if there is a user name and password matched with this in the database and give access
-@app.route('/search', methods=['POST', 'GET'])
-def search():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
@@ -48,24 +38,43 @@ def search():
                            {'email': email, 'password': password}).fetchall()
 
         if len(users) == 0:
-            return render_template("badusernameorpw.html")
+            return redirect(url_for('badusernameorpw'))
         else:
-            return render_template('search.html')
+            return redirect(url_for('search'))
     else:
-        return render_template('search.html')
+        return render_template("signin.html")
 
 
-@app.route('/display', methods=["POST"])
+@app.route('/badusernameorpw')
+def badusernameorpw():
+    return render_template('badusernameorpw.html')
+
+
+@app.route('/signup', methods=['POST', 'GET'])
+def signup():
+    if request.method == 'POST':
+        username = request.form.get("username")
+        email = request.form.get("email")
+        psw = request.form.get("psw")
+        psw_repeat = request.form.get("psw-repeat")
+
+        db.execute(
+            "insert into users (user_name, email, password, confirmed_password) values (:user_name, :email, :password, :confirmed_password)",
+            {'user_name': username, 'email': email, 'password': psw, 'confirmed_password': psw_repeat})
+        db.commit()
+        return redirect(url_for('display'))
+    else:
+        return render_template("signup.html")
+
+
+# will check if there is a user name and password matched with this in the database and give access
+@app.route('/search', methods=['POST', 'GET'])
+def search():
+    return render_template('search.html')
+
+
+@app.route('/display', methods=["POST", "GET"])
 def display():
-    username = request.form.get("username")
-    email = request.form.get("email")
-    psw = request.form.get("psw")
-    psw_repeat = request.form.get("psw-repeat")
-
-    db.execute(
-        "insert into users (user_name, email, password, confirmed_password) values (:user_name, :email, :password, :confirmed_password)",
-        {'user_name': username, 'email': email, 'password': psw, 'confirmed_password': psw_repeat})
-    db.commit()
     return render_template('display.html')
 
 
