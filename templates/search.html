@@ -45,10 +45,10 @@ button:hover {
       <br><br><br><br>
         <div class="od">
             <div class="do">
-                <button style="background-color: rgb(0, 0,250);" type="button" class="sob">Kaleb</button>
+                <button style="background-color: rgb(0, 0,250);" type="button" class="sob">{{ g.user.user_name }}</button>
             </div>
             <div class="do">
-                <a href="{{ url_for('index') }}"><button style="background-color: rgb(0,0,210);" type="button" class="sob">Sign Out</button></a>
+                <a href="{{ url_for('signout') }}"><button style="background-color: rgb(0,0,210);" type="button" class="sob">Sign Out</button></a>
             </div>
         </div>
       <br><br><br><br><br>
