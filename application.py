@@ -127,8 +127,12 @@ def bookdetail(isbn):
         return redirect(url_for('index'))
     book = db.execute("select id, title, author, isbn, yearr from books where isbn = :isbn",
                       {'isbn': isbn}).fetchone()
+    reviews = db.execute('select rate, reviewername, review from reviews where book_id = :book_id',
+                        {'book_id': book.id}).fetchall()
+#    username = db.execute('select user_name from users where id = :id',
+#                          {'id': reviews.user_id}).fetchall()
 
-    return render_template('bookdetail.html', author=book.author, title=book.title, isbn=isbn, yearr=book.yearr)
+    return render_template('bookdetail.html', author=book.author, title=book.title, isbn=isbn, yearr=book.yearr, reviews=reviews)
 
 
 # i need to work on this function tho
@@ -151,3 +155,8 @@ def oops():
 
 if __name__ == "__main__":
     app.run(debug=True)
+"""
+
+username = db.execute('select user_name from users where id = :user_id',
+                      {'id':})
+"""
