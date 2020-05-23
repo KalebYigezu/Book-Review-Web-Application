@@ -26,8 +26,6 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-
-
 # Set up database
 engine = create_engine(os.getenv("MYDATAONHEROKU"))
 db = scoped_session(sessionmaker(bind=engine))
@@ -44,7 +42,6 @@ def before_request():
         g.user = user
 
 
-
 @app.route("/")
 def index():
     return render_template("signinorup.html")
@@ -58,7 +55,6 @@ def signout():
 
 @app.route('/signin', methods=['POST', 'GET'])
 def signin():
-
     if request.method == 'POST':
         session.pop('id', None)
         email = request.form.get('email')
@@ -115,20 +111,37 @@ def display():
 def selected_books():
     if not g.user:
         return redirect(url_for('index'))
-    search_results = '%' + request.form.get('search') +'%'
-    books = db.execute('select isbn, author, title, yearr from books where isbn like :isbn or author like :author or title like :title',
-                       {'yearr': search_results,'isbn': search_results, 'title': search_results, 'author': search_results}).fetchall()
+    search_results = '%' + request.form.get('search') + '%'
+    books = db.execute(
+        'select isbn, author, title, yearr from books where isbn like :isbn or author like :author or title like :title',
+        {'yearr': search_results, 'isbn': search_results, 'title': search_results, 'author': search_results}).fetchall()
     if len(books) == 0:
         return redirect(url_for('oops'))
     else:
         return render_template('selectedbooks.html', books=books)
 
 
-@app.route('/bookdetail/<string:title>/<string:author>/<string:isbn>/<string:yearr>', methods=['POST', 'GET'])
-def bookdetail(title, author, isbn, yearr):
+@app.route('/bookdetail/<string:isbn>', methods=['POST', 'GET'])
+def bookdetail(isbn):
     if not g.user:
         return redirect(url_for('index'))
-    return render_template('bookdetail.html', title=title, author=author, isbn=isbn, yearr=yearr)
+    book = db.execute("select id, title, author, isbn, yearr from books where isbn = :isbn",
+                      {'isbn': isbn}).fetchone()
+
+    return render_template('bookdetail.html', author=book.author, title=book.title, isbn=isbn, yearr=book.yearr)
+
+
+# i need to work on this function tho
+@app.route('/bookdetaitl/review')
+def review():
+    if not g.user:
+        return redirect(url_for('index'))
+    if request.method == 'POST':
+        current_user = session['id']
+
+        rating = request.form.get('rating')
+        review = request.form.get('review')
+    return render_template('review.html')
 
 
 @app.route('/oops')
