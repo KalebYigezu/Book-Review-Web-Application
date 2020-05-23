@@ -87,7 +87,7 @@
          Author = {{ book.author }} <br>
          Year   = {{ book.yearr }} <br>
          ISBN   = {{ book.isbn }} <br>
-    <a href="{{ url_for('bookdetail', title=book.title, author=book.author, isbn=book.isbn, yearr=book.yearr) }}"><div class="footer">Book Details</div></a>
+    <a href="{{ url_for('bookdetail', isbn=book.isbn) }}"><div class="footer">Book Details</div></a>
     </div>
 {% endfor %}
 
