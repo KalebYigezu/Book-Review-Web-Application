@@ -101,5 +101,11 @@
     <div class="rws"><button>Submit</button></div>
 </div>
 </form>
+<br><br><br>
+<div style="text-align: center">
+    {% for review in reviews %}
+        <h4><b>{{ review.reviewername }}</b> --------- {{ review.rate }} --------- "{{ review.review }}"</h4>
+    {% endfor %}
+</div>
 </body>
 </html>
