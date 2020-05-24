@@ -87,18 +87,18 @@
 <form action="{{ url_for('review', isbn=isbn) }}" method="post">
 <div class="not" style="border: 2px solid white; text-align: center">
     <div class="rws"><label for="rates"><b>Rate This Book : </b></label>
-            <select id="rating" required>
-                <option value="One">1</option>
-                <option value="Two">2</option>
-                <option value="Three">3</option>
-                <option value="Four">4</option>
-                <option value="Five">5</option>
+            <select id="rating" required name = 'userrate'>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
             </select></div>
         <div class="rws">
             <label for="review" ><b>Say Something : </b></label>
-            <textarea required></textarea>
+            <textarea required name="userreview"></textarea>
         </div>
-    <div class="rws"><button>Submit</button></div>
+    <div class="rws"><button type="submit">Submit</button></div>
 </div>
 </form>
 <br><br><br>
