@@ -1,5 +1,4 @@
 import os
-import csv
 
 from flask import Flask, session, render_template, request, redirect, url_for, g, flash
 from flask_session import Session
@@ -156,7 +155,7 @@ def review(isbn):
                  'reviewername': g.user.user_name})
             db.commit()
         else:
-            flash('You have already reviewed this book.', 'info')
+            flash('You have already reviewed this book.')
 
     return redirect(url_for('bookdetail', isbn=isbn))
 
@@ -168,8 +167,3 @@ def oops():
 
 if __name__ == "__main__":
     app.run(debug=True)
-"""
-
-username = db.execute('select user_name from users where id = :user_id',
-                      {'id':})
-"""
