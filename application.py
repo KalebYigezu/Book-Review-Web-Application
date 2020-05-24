@@ -1,7 +1,7 @@
 import os
 import csv
 
-from flask import Flask, session, render_template, request, redirect, url_for, g
+from flask import Flask, session, render_template, request, redirect, url_for, g, flash
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -128,24 +128,37 @@ def bookdetail(isbn):
     book = db.execute("select id, title, author, isbn, yearr from books where isbn = :isbn",
                       {'isbn': isbn}).fetchone()
     reviews = db.execute('select rate, reviewername, review from reviews where book_id = :book_id',
-                        {'book_id': book.id}).fetchall()
-#    username = db.execute('select user_name from users where id = :id',
-#                          {'id': reviews.user_id}).fetchall()
+                         {'book_id': book.id}).fetchall()
 
-    return render_template('bookdetail.html', author=book.author, title=book.title, isbn=isbn, yearr=book.yearr, reviews=reviews)
+    return render_template('bookdetail.html', author=book.author, title=book.title, isbn=isbn, yearr=book.yearr,
+                           reviews=reviews)
 
 
-# i need to work on this function tho
-@app.route('/bookdetaitl/review')
-def review():
+@app.route('/review/<string:isbn>', methods=['POST', 'GET'])
+def review(isbn):
     if not g.user:
         return redirect(url_for('index'))
     if request.method == 'POST':
         current_user = session['id']
 
-        rating = request.form.get('rating')
-        review = request.form.get('review')
-    return render_template('review.html')
+        rating = request.form.get('userrate')
+        review = request.form.get('userreview')
+
+        book_id = db.execute("select id from books where isbn = :isbn",
+                             {'isbn': isbn}).fetchone()
+
+        ifany = db.execute('select * from reviews where user_id=:user_id and book_id=:book_id',
+                           {'user_id': current_user, 'book_id': book_id[0]}).fetchone()
+        if not ifany:
+            db.execute(
+                'insert into reviews (user_id, book_id, review, rate, reviewername) values (:user_id, :book_id, :review, :rate, :reviewername)',
+                {'user_id': g.user.id, 'book_id': book_id.id, 'review': review, 'rate': rating,
+                 'reviewername': g.user.user_name})
+            db.commit()
+        else:
+            flash('You have already reviewed this book.', 'info')
+
+    return redirect(url_for('bookdetail', isbn=isbn))
 
 
 @app.route('/oops')
