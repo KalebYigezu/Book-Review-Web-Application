@@ -1,1 +1,1 @@
-web: gunicorn wsgi:app
+web: vendor/bin/heroku-php-apache2 ./
