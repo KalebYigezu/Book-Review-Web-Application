@@ -8,7 +8,6 @@ verify_ssl = true
 [packages]
 flask = "*"
 gunicorn = "*"
-dependency = "*"
 flask-sqlalchemy = "*"
 sqlalchemy = "*"
 psycopg2 = "*"
