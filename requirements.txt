@@ -1,4 +1,1 @@
-sqlalchemy-migrate==0.7.2
-SQLAlchemy==0.7.9
-Flask-SQLAlchemy==0.16
-Flask-SQLAlchemy
+sqlalchemy
