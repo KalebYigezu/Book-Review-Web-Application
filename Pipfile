@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 dependency = "*"
 sqlalchemy = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"
